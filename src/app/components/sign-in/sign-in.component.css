@@ -1,0 +1,31 @@
+.displayTable {
+    box-shadow: inset 0 1px 0 0 #dcecfb;
+    background: #bddbfa linear-gradient(to bottom, #f0fabd 5%, #f79e67 100%);
+    border: 2px solid #000000;
+    color: #000000;
+  }
+.displayTableCell {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    padding: 10px;
+}
+.formGroup {
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+.formControl {
+    border-radius: 3px;
+    border: 1px solid #000000;
+    height: 25px;
+}
+.redirect {
+    color: rgb(0, 191, 255);
+}
+.btnPrimary {
+    width: 150px;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid #000000;
+    background-color: lightblue;
+}
