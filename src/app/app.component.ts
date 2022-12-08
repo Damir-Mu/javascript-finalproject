@@ -1,8 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { CartService } from './shared/services/cart.service';
 import { Observable, Subscription } from 'rxjs';
-import { CartItem } from './shared/models/cart-item';
-import { ShoppingCart } from './shared/models/shopping-cart';
 import { AuthService } from './shared/services/auth.service';
 import {
   Router,
@@ -18,8 +15,6 @@ import {
 export class AppComponent implements OnInit, OnDestroy {
   public title = 'angularfirebase-authentication';
 
-  public cart: Observable<ShoppingCart> | null = null;
-  public cartItems: CartItem[] = [];
   public itemCount: number = 0;
 
   private _cartSubscription: Subscription | null = null;
@@ -29,7 +24,6 @@ export class AppComponent implements OnInit, OnDestroy {
   private _routes;
 
   constructor(
-    private _cartService: CartService, 
     private _router: Router,
     public authService: AuthService
   ) {
@@ -51,12 +45,6 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   public ngOnInit(): void {
-    this.cart = this._cartService.get();
-    this._cartSubscription = this.cart.subscribe((cart) => {
-      this.itemCount = cart.items
-        .map((x) => x.quantity)
-        .reduce((p, n) => p + n, 0);
-    });
   }
 
   public ngOnDestroy(): void {

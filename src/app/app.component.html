@@ -13,14 +13,6 @@
         <mat-icon>home</mat-icon>
         <span>Home</span>
       </a>
-      <a mat-menu-item routerLink="products">
-        <mat-icon>forest</mat-icon>
-        <span>Products</span>
-      </a>
-      <a *ngIf="authService.isLoggedIn" mat-menu-item routerLink="cart">
-        <mat-icon>shopping_cart</mat-icon>
-        <span>Cart</span>
-      </a>
       <a *ngIf="authService.isLoggedIn" mat-menu-item (click)="authService.SignOut">
         <mat-icon>logout</mat-icon>
         <span>Logout</span>
@@ -40,8 +32,7 @@
 
   </mat-menu>
   <span class="spacer"></span>
-  <img class="brand-logo" src="assets/brand-logo.svg" alt="brand Logo">
-  <span>Bonsai Store App</span>
+  <span>To Do App</span>
   <span class="spacer"></span>
   <button
     *ngIf="authService.isLoggedIn"
