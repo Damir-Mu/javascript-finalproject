@@ -11,13 +11,37 @@
   row-gap: 10px;
 }
 
-.checklist {
+.centerlist {
   display: flex;
   flex-direction: row;
   justify-content: center;
+}
+
+.checklist {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   margin-top: 20px;
+}
+
+.list-item {
+  margin: 4px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   gap: 10px;
   row-gap: 10px;
+  padding-top: 12px;
+  padding-left: 8px;
+  padding-right: 8px;
+  width: 300px;
+  border-radius: 6px;
+  border: 1px solid #dcdcdc;
+}
+
+.writeTask {
+  width: 200px;
+  height: 50px;
 }
 
 .button {

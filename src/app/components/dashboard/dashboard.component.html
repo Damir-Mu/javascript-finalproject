@@ -1,14 +1,22 @@
 <div>
     <div class="taskForm">
         <div>
-            <input placeholder="Set a new task" >
+            <textarea class="writeTask" placeholder="Set a new task" ></textarea>
         </div>
         <div>
             <input type="button" class="btn btnPrimary" value="Add task" >
         </div>
     </div>
-    <div class="checklist">
-        <p>tasks will be shown here</p>
-        <mat-checkbox aria-label="isFinishedTask"></mat-checkbox>
+    <div class="centerlist">
+        <div class="checklist">
+            <div class="list-item">
+                <p>tasks will be shown here</p>
+                <mat-checkbox aria-label="isFinishedTask"></mat-checkbox>
+            </div>
+            <div class="list-item">
+                <p>tasks will be deleted when checkbox is checked</p>
+                <mat-checkbox aria-label="isFinishedTask"></mat-checkbox>
+            </div>
+        </div>
     </div>
 </div>
