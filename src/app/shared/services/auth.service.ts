@@ -56,15 +56,13 @@ export class AuthService {
     return this.afAuth
       .createUserWithEmailAndPassword(email, password)
       .then((result) => {
-        /* Call the SendVerificaitonMail() function when new user sign 
-        up and returns promise */
         this.SetUserData(result.user);
       })
       .catch((error) => {
         window.alert(error.message);
       });
   }
-  // Returns true when user is looged in and email is verified
+  // Returns true when user is looged in
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user')!);
     return user !== null;

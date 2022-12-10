@@ -13,7 +13,7 @@
         <mat-icon>home</mat-icon>
         <span>Home</span>
       </a>
-      <a *ngIf="authService.isLoggedIn" mat-menu-item (click)="authService.SignOut">
+      <a *ngIf="authService.isLoggedIn" mat-menu-item (click)="authService.SignOut()">
         <mat-icon>logout</mat-icon>
         <span>Logout</span>
       </a>
@@ -32,6 +32,8 @@
 
   </mat-menu>
   <span class="spacer"></span>
+  <img class="brand-logo" src="assets/list-logo.png" alt="brand Logo">
+  <span class="minispacer"></span>
   <span>To Do App</span>
   <span class="spacer"></span>
   <button
@@ -39,20 +41,21 @@
     class="button"
     mat-icon-button
     class="icon"
-    aria-label="Shopping Cart Icon"
-    routerLink="cart"
+    aria-label="checklist"
+    routerLink="list"
   >
-    <mat-icon matBadge="{{ itemCount }}" matBadgeColor="warn"
-      >shopping_cart
+    <mat-icon  matBadge="{{ itemCount }}" matBadgeColor="warn"
+      >checklist
     </mat-icon>
   </button>
+  <span class="minispacer"></span>
   <button
     *ngIf="authService.isLoggedIn"
     mat-icon-button
     title="Logout"
     class="icon"
     aria-label="Logout Button"
-    routerLink="cart"
+    routerLink="list"
     (click)="authService.SignOut()"
   >
     <mat-icon>logout</mat-icon>
