@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
 import { AuthService } from './shared/services/auth.service';
+import { TodoService } from './shared/services/todo.service';
 import {
   Router,
   NavigationEnd,
@@ -23,9 +24,18 @@ export class AppComponent implements OnInit, OnDestroy {
   private _event$;
   private _routes;
 
+  uncompletedTasks$: Observable<Task[]> = this.todoService.tasks$.pipe(
+    map((items: any[]) => items.filter(item => item.complete === false))
+  )
+
+  completedTasks$: Observable<Task[]> = this.todoService.tasks$.pipe(
+    map((items: any[]) => items.filter(item => item.complete === true))
+  )
+
   constructor(
     private _router: Router,
-    public authService: AuthService
+    public authService: AuthService,
+    private todoService: TodoService
   ) {
     console.log(this._router.config);
     this._routes = this._router.config
