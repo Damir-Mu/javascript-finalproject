@@ -1,43 +1,39 @@
-import { Injectable } from '@angular/core';
+/****** Todo service ******/
 
-@Injectable({
-  providedIn: 'root'
-})
-export class TodoService {
 
-  // a private variable that will hold our state.
-  private _tasks: BehaviorSubject<Task[]> = new BehaviorSubject<Task[]>([]);
+// import { Injectable } from '@angular/core';
+// import { AngularFirestore } from '@angular/fire/compat/firestore';
 
-  // a public variable that returns an observable from our state.
-  public tasks$: Observable<Task[]> = this._tasks
-    .asObservable()
-    .pipe(distinctUntilChanged());
+// //Task model
+// import { Task } from '../models/task';
 
-  // a helper to get the actual values from the state, not an observable.
-  get tasks() {
-    return this._tasks.getValue();
-  }
+// @Injectable({
+//   providedIn: 'root'
+// })
+// export class TodoService {
 
-  addItem(task: Task) {
-    task.id = uuidv4();
-    this._tasks.next([...this.tasks, task]);
-  }
+//   constructor(private afs: AngularFirestore) { }
 
-  updateItem(todo: Task) {
-    const index = this.tasks.findIndex((item) => item.id === todo.id);
-    const tasks = this.tasks;
-    tasks[index] = todo;
-    this._tasks.next([...tasks]);
-  }
+//   getAllTasks() {
+//     return this.afs.collection('/Tasks').snapshotChanges();
+//   }
 
-  deleteItem(todo: Task) {
-    const tasks = this.tasks.filter((item) => item.id !== todo.id);
-    this._tasks.next([...tasks]);
-  }
+//   taskComplete(task: Task) {
+//     if (task.complete = true) {
+//       return this.afs.doc('/Tasks/' + task.id).delete();
+//     } else {
+//       return
+//     }
+//   }
 
-  clearAll() {
-    this._tasks.next([]);
-  }
+//   addItem(task: Task) {
+//     task.id = this.afs.createId();
+//     return this.afs.collection('/Tasks').add(task);
+//   }
 
-  constructor() { }
-}
+//   updateTask(task: Task) {
+//     this.taskComplete(task);
+//     this.addItem(task);
+//   }
+
+// }

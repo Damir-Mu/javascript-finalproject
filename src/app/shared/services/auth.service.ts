@@ -3,11 +3,17 @@ import { User } from '../../shared/models/user';
 import { LocalStorageService } from './storage.service';
 import * as auth from 'firebase/auth';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+
+//Firestore imports
 import {
   AngularFirestore,
   AngularFirestoreDocument,
 } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
+
+//Model import
+import { Task } from '../models/task';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -57,6 +63,7 @@ export class AuthService {
       .createUserWithEmailAndPassword(email, password)
       .then((result) => {
         this.SetUserData(result.user);
+        this.router.navigate(['dashboard']);
       })
       .catch((error) => {
         window.alert(error.message);
@@ -102,5 +109,28 @@ export class AuthService {
       this.storage.removeItem('cart');
       this.router.navigate(['sign-in']);
     });
+  }
+
+  //Firestore data methods
+  getAllTasks() {
+    return this.afs.collection(`users/${(this.userData.uid)}/Tasks`).snapshotChanges();
+  }
+
+  taskComplete(task: Task) {
+    if (task.complete = true) {
+      return this.afs.doc(`/users/${this.userData.uid}/Tasks/` + task.id).delete();
+    } else {
+      return
+    }
+  }
+
+  addItem(task: Task) {
+    task.id = this.afs.createId();
+    return this.afs.collection(`/users/${this.userData.uid}/Tasks`).add(task);
+  }
+
+  updateTask(task: Task) {
+    this.taskComplete(task);
+    this.addItem(task);
   }
 }
